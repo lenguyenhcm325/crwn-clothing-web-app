@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import logo from "./logo.svg";
-import CategoryItem from "./components/category-item/category-item.component";
+import CategoryItem from "./components/directory-item/directory-item.component";
 import Directory from "./components/directory/directory.component";
 import Home from "./routes/home/home.component";
 import Navigation from "./routes/navigation/navigation.component";
@@ -16,7 +16,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Navigation />}>
         <Route index element={<Home />} />
-        <Route path="shop" element={<Shop />} />
+        <Route path="shop/*" element={<Shop />} />
         <Route path="auth" element={<Authentication />} />
         <Route path="checkout" element={<Checkout />} />
       </Route>
