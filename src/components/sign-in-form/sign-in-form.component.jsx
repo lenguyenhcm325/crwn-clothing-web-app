@@ -4,10 +4,12 @@ import { useState } from "react";
 import FormInput from "../form-input/form-input.component";
 import "./sign-in-form.styles.scss";
 import Button from "../button/button.component";
-import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
-import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import { BUTTON_TYPES_CLASSES } from "../button/button.component";
-
+import { useDispatch } from "react-redux";
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from "../../store/user/user.action";
 // import { UserContext } from "../../contexts/user.context";
 
 const defaultFormFields = {
@@ -16,6 +18,7 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
+  const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -26,7 +29,8 @@ const SignInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-    await signInWithGooglePopup();
+    dispatch(googleSignInStart());
+    // await signInWithGooglePopup();
     // await createUserDocumentFromAuth(user);
     // setCurrentUser(user);
   };
@@ -35,10 +39,8 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const { user } = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
+      dispatch(emailSignInStart(email, password));
+
       // setCurrentUser(user);
 
       resetFormFields();
@@ -51,6 +53,7 @@ const SignInForm = () => {
           break;
         case "auth/wrong-password":
           alert("username or password is incorrect");
+          break;
         default:
           console.log(error);
           break;

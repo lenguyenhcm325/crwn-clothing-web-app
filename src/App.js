@@ -1,17 +1,30 @@
 import { Routes, Route } from "react-router-dom";
-import logo from "./logo.svg";
-import CategoryItem from "./components/directory-item/directory-item.component";
-import Directory from "./components/directory/directory.component";
+import { useDispatch } from "react-redux";
+
 import Home from "./routes/home/home.component";
 import Navigation from "./routes/navigation/navigation.component";
 import Authentication from "./routes/authentication/authentication.component";
 import Shop from "./routes/shop/shop.component";
 import Checkout from "./routes/checkout/checkout.component";
+import { checkUserSession, setCurrentUser } from "./store/user/user.action";
+import {
+  onAuthStateChangedListener,
+  createUserDocumentFromAuth,
+  getCurrentUser,
+} from "./utils/firebase/firebase.utils";
+import { useEffect } from "react";
+
 // const Shop = () => {
 //   return <h1>I am the shope page</h1>;
 // };
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkUserSession());
+  }, [dispatch]);
+
   return (
     <Routes>
       <Route path="/" element={<Navigation />}>
