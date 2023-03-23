@@ -3,9 +3,7 @@ import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
-import "./navigation.styles.jsx";
-// import { UserContext } from "../../contexts/user.context";
-// import { signOut } from "firebase/auth";
+
 import { signOutStart } from "../../store/user/user.action";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
@@ -16,7 +14,7 @@ import {
   NavLinks,
   NavLink,
   LogoContainer,
-} from "./navigation.styles.jsx";
+} from "./navigation.styles";
 
 const Navigation = () => {
   const currentUser = useSelector(selectCurrentUser);
