@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
 import { createAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import { useDispatch } from "react-redux";

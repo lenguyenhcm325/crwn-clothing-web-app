@@ -19,12 +19,12 @@ export const CATEGORIES_INITIAL_STATE: CategoriesState = {
 
 export const categoriesReducer = (
   state = CATEGORIES_INITIAL_STATE,
-  action = {} as AnyAction
+  action: AnyAction
 ): CategoriesState => {
   // const { type, payload } = action;
   // switch (action.type) {
     if(fetchCategoriesStart.match(action)){
-      action
+      // action
       return { ...state, isLoading: true };
     }
     if(fetchCategoriesSuccess.match(action)){
@@ -34,17 +34,6 @@ export const categoriesReducer = (
     return { ...state, error: action.payload, isLoading: false };
     }
     return state; 
-
-
 };
 
-  //   case CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START:
-  //     return { ...state, isLoading: true };
 
-  //   case CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS:
-  //     return { ...state, categories: action.payload, isLoading: false };
-  //   case CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_FAILED:
-  //     return { ...state, error: action.payload, isLoading: false };
-  //   default:
-  //     return state;
-  // }

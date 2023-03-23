@@ -1,6 +1,4 @@
 import { useState } from "react";
-// import { createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
-// import { createAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import "./sign-in-form.styles.scss";
 import Button from "../button/button.component";
@@ -30,9 +28,6 @@ const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     dispatch(googleSignInStart());
-    // await signInWithGooglePopup();
-    // await createUserDocumentFromAuth(user);
-    // setCurrentUser(user);
   };
 
   const handleSubmit = async (event) => {
@@ -59,15 +54,6 @@ const SignInForm = () => {
           break;
       }
     }
-
-    // if (confirmPassword && confirmPassword == password) {
-    //   const userAuth = await createAuthUserWithEmailAndPassword(
-    //     email,
-    //     password
-    //   );
-    //   const userDocRef1 = await createUserDocumentFromAuth(userAuth);
-    //   console.log(userDocRef1);
-    // }
   };
 
   const handleChange = (event) => {
