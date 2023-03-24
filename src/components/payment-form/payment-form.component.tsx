@@ -16,7 +16,7 @@ import { selectCurrentUser } from "../../store/user/user.selector";
 import { BUTTON_TYPES_CLASSES } from "../button/button.component";
 
 
-const ifValidCardElement = (card) 
+const ifValidCardElement = (card: StripeCardElement | null): card is StripeCardElement => card !== null;  
 
 
 const PaymentForm = () => {
@@ -47,7 +47,7 @@ const PaymentForm = () => {
 
     const cardDetails = elements.getElement(CardElement);
 
-    if (cardDetails === null) return;
+    if (!ifValidCardElement(cardDetails)) return;
     setIsProcessingPayment(true);
     const paymentResult = await stripe.confirmCardPayment(client_secret, {
       payment_method: {
